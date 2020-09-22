@@ -16,8 +16,11 @@ public class S2_JFrameButton extends javax.swing.JFrame {
     /**
      * Creates new form JFrameButton
      */
+    //Đây là contructor của class và luôn chạy đầu tiên khi chạy chương trình
     public S2_JFrameButton() {
-        initComponents();
+        initComponents();        
+        //btn_off.setVisible(false); setVisible dùng để ẩn hoặc hiện
+        btn_off.setEnabled(false);// setEnabled khóa không cho người thực hiện hạnh động nếu không set là true
     }
 
     /**
@@ -34,6 +37,8 @@ public class S2_JFrameButton extends javax.swing.JFrame {
         btn_ok = new javax.swing.JButton();
         btn_Red = new javax.swing.JButton();
         btn_blue = new javax.swing.JButton();
+        btn_off = new javax.swing.JButton();
+        btn_on1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +55,7 @@ public class S2_JFrameButton extends javax.swing.JFrame {
         lbl_text.setText("jLabel1");
 
         btn_ok.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        btn_ok.setText("OK");
+        btn_ok.setText("Bật/Tắt");
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
@@ -73,30 +78,56 @@ public class S2_JFrameButton extends javax.swing.JFrame {
             }
         });
 
+        btn_off.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        btn_off.setText("Tắt");
+        btn_off.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_offActionPerformed(evt);
+            }
+        });
+
+        btn_on1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        btn_on1.setText("Bật");
+        btn_on1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_on1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(lbl_text)
-                .addContainerGap(474, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_blue)
                     .addComponent(btn_Green))
                 .addGap(31, 31, 31))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(lbl_text))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(btn_off)))
+                .addContainerGap(406, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(71, 71, 71)
                     .addComponent(btn_ok)
-                    .addContainerGap(521, Short.MAX_VALUE)))
+                    .addContainerGap(427, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(540, Short.MAX_VALUE)
                     .addComponent(btn_Red)
                     .addGap(32, 32, 32)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(49, 49, 49)
+                    .addComponent(btn_on1)
+                    .addContainerGap(537, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +138,9 @@ public class S2_JFrameButton extends javax.swing.JFrame {
                 .addComponent(btn_blue)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Green)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btn_off)
+                .addGap(57, 57, 57))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(152, 152, 152)
@@ -118,18 +151,30 @@ public class S2_JFrameButton extends javax.swing.JFrame {
                     .addGap(48, 48, 48)
                     .addComponent(btn_Red)
                     .addContainerGap(323, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(313, Short.MAX_VALUE)
+                    .addComponent(btn_on1)
+                    .addGap(58, 58, 58)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_GreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GreenActionPerformed
-       this.getContentPane().setBackground(Color.red);
+        this.getContentPane().setBackground(Color.green);
     }//GEN-LAST:event_btn_GreenActionPerformed
-
+    boolean temp = true;//Biến toàn cục
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
-        System.out.println("Nút đã bấm rồi nè");
-        lbl_text.setText("Chào Mừng Các Bạn Đến Với JAVA2");
+        //Nếu biến temp đặt vào trong thành biến cục bộ sẽ ko xử lý được login đoạn này
+        //Vì mỗi lần thực hiện clic vào nút biến temp luôn true
+        if (temp) {
+            lbl_text.setText("Bật");
+            temp = false;
+        } else {
+            lbl_text.setText("Tắt");
+            temp = true;
+        }
     }//GEN-LAST:event_btn_okActionPerformed
 
     private void btn_RedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RedActionPerformed
@@ -137,8 +182,22 @@ public class S2_JFrameButton extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_RedActionPerformed
 
     private void btn_blueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_blueActionPerformed
-         this.getContentPane().setBackground(Color.blue);
+        this.getContentPane().setBackground(Color.blue);
     }//GEN-LAST:event_btn_blueActionPerformed
+
+    private void btn_offActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_offActionPerformed
+        //btn_on1.setVisible(true);
+        //btn_off.setVisible(false);
+        btn_on1.setEnabled(true);
+        btn_off.setEnabled(false);
+    }//GEN-LAST:event_btn_offActionPerformed
+
+    private void btn_on1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_on1ActionPerformed
+//        btn_on1.setVisible(false);
+//        btn_off.setVisible(true);
+        btn_on1.setEnabled(false);
+        btn_off.setEnabled(true);
+    }//GEN-LAST:event_btn_on1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,7 +241,9 @@ public class S2_JFrameButton extends javax.swing.JFrame {
     private javax.swing.JButton btn_Green;
     private javax.swing.JButton btn_Red;
     private javax.swing.JButton btn_blue;
+    private javax.swing.JButton btn_off;
     private javax.swing.JButton btn_ok;
+    private javax.swing.JButton btn_on1;
     private javax.swing.JLabel lbl_text;
     // End of variables declaration//GEN-END:variables
 }

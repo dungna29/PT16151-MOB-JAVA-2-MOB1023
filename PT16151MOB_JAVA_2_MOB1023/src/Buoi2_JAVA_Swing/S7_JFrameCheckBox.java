@@ -48,7 +48,7 @@ public class S7_JFrameCheckBox extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_ThongBao)
@@ -70,6 +70,7 @@ public class S7_JFrameCheckBox extends javax.swing.JFrame {
 
     private void check_DongYVoiDieuKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_DongYVoiDieuKhoanActionPerformed
         boolean temp = check_DongYVoiDieuKhoan.isSelected();
+        //isSelected() dùng để lấy giá trị true hoặc false của checkbox
         if (temp) {
             lbl_ThongBao.setText("Người dùng đã đồng ý với điều khoản");
         } else {
