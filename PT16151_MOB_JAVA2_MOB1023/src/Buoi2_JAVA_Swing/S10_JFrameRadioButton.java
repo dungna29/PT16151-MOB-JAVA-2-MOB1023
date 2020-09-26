@@ -19,6 +19,7 @@ public class S10_JFrameRadioButton extends javax.swing.JFrame {
     public S10_JFrameRadioButton() {
         initComponents();
         radioGioiTinh();
+         
     }
     void radioGioiTinh(){
         ButtonGroup buttonGroup = new ButtonGroup();
