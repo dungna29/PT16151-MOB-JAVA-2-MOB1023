@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DemoCbcSuDungInterface;
+package Buoi2_P2_DemoCbcSuDungInterface;
 
 import javax.swing.DefaultComboBoxModel;
 

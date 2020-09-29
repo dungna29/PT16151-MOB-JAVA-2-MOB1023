@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Buoi2_JAVA_Swing;
+package Buoi2_P1_JAVA_Swing;
 
 /**
  *
  * @author LegendNguyen
  */
-public class S1_JFrameLabel extends javax.swing.JFrame {
+public class S7_JFrameCheckBox extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFrameLabel
+     * Creates new form JFrameCheckBox
      */
-    public S1_JFrameLabel() {
+    public S7_JFrameCheckBox() {
         initComponents();
+        setLocationRelativeTo(null);// Khi chạy chương trình giúp chương trình hiển thị ở giữa màn hình
     }
 
     /**
@@ -27,47 +28,55 @@ public class S1_JFrameLabel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        lbl_name = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        check_DongYVoiDieuKhoan = new javax.swing.JCheckBox();
+        lbl_ThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Chương trình đầu tiên JAVA2");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("jLabel đơn giản chỉ là một nhãn chưa text hiển thị");
+        check_DongYVoiDieuKhoan.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        check_DongYVoiDieuKhoan.setText("Đồng ý với điều khoản");
+        check_DongYVoiDieuKhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check_DongYVoiDieuKhoanActionPerformed(evt);
+            }
+        });
 
-        lbl_name.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        lbl_name.setText("Name");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel2.setText("jLabel đơn giản chỉ là một nhãn chưa text hiển thị");
+        lbl_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_ThongBao.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(lbl_name))
-                .addContainerGap(205, Short.MAX_VALUE))
+                    .addComponent(lbl_ThongBao)
+                    .addComponent(check_DongYVoiDieuKhoan))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lbl_name)
+                .addGap(114, 114, 114)
+                .addComponent(check_DongYVoiDieuKhoan)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(13, 13, 13)
-                .addComponent(jLabel1)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addComponent(lbl_ThongBao)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void check_DongYVoiDieuKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_DongYVoiDieuKhoanActionPerformed
+        boolean temp = check_DongYVoiDieuKhoan.isSelected();
+        //isSelected() dùng để lấy giá trị true hoặc false của checkbox
+        if (temp) {
+            lbl_ThongBao.setText("Người dùng đã đồng ý với điều khoản");
+        } else {
+            lbl_ThongBao.setText("Người dùng chưa đồng ý với điều khoản");
+        }
+    }//GEN-LAST:event_check_DongYVoiDieuKhoanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,13 +95,13 @@ public class S1_JFrameLabel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(S1_JFrameLabel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S7_JFrameCheckBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(S1_JFrameLabel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S7_JFrameCheckBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(S1_JFrameLabel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S7_JFrameCheckBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(S1_JFrameLabel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(S7_JFrameCheckBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -100,14 +109,13 @@ public class S1_JFrameLabel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new S1_JFrameLabel().setVisible(true);
+                new S7_JFrameCheckBox().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lbl_name;
+    private javax.swing.JCheckBox check_DongYVoiDieuKhoan;
+    private javax.swing.JLabel lbl_ThongBao;
     // End of variables declaration//GEN-END:variables
 }
