@@ -36,6 +36,7 @@ public class QLGV {
         return lstGiaoVien;
     }
 
+    //Hàm này dùng để tạo tên các cột trên giao diện
     public List<String> getColumname() {
         List<String> lstcl = new ArrayList<>();
         lstcl.add("Số TT");
@@ -45,6 +46,32 @@ public class QLGV {
         lstcl.add("Giới tính");
         lstcl.add("Điện thoại");
         return lstcl;
+    }
+
+    //Hàm này dùng để tạo ra danh sách năm sinh
+    public int[] getNamSinh() {
+        int[] arrNamsinh = new int[2020 - 1900];
+        for (int i = 0; i < arrNamsinh.length; i++) {
+            arrNamsinh[i] = 1900 + i;//Gán dữ liệu cho năm sinh
+        }
+        return arrNamsinh;//Trả về một mảng kiểu số nguyên
+    }
+
+    public boolean addGiaoVien(GiaoVien giaoVien) {
+        if (giaoVien != null) {
+            lstGiaoVien.add(giaoVien);
+            return true;
+        }
+        return false;
+    }
+
+    public int indexGV(String maGV) {
+       for (int i = 0; i < lstGiaoVien.size(); i++) {
+            if (lstGiaoVien.get(i).getMagv().equalsIgnoreCase(maGV)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

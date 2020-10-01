@@ -6,7 +6,10 @@
 package Buoi3_QuanLyGiaoVien;
 
 import Buoi1_MVC.*;
+import java.awt.Color;
+import java.util.Arrays;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,15 +27,38 @@ public class MainGUI extends javax.swing.JFrame {
 
     public MainGUI() {
         initComponents();
+        txt_Tuoi.setEnabled(false);//Không cho sửa ô Text tuổi
+        rd_Nam.setSelected(true);
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(rd_Nu);
+        bg.add(rd_Nam);
         defaultTableModel = (DefaultTableModel) tbl_GiaoVien.getModel();
         for (String x : qlgv.getColumname()) {//qlgv.getColumname() Lấy ra 1 danh sách các tên cột đã đặt
             defaultTableModel.addColumn(x);//Thêm tên cột vào bảng Giáo viên
         }
         defaultTableModel.setRowCount(0);
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(rd_Nu);
-        bg.add(rd_Nam);
+        //
+//        	int[] intArray = { 1, 2, 3, 4 ,5 };
+//
+//		String strArray[] = new String[intArray.length];
+//
+//		for (int i = 0; i < intArray.length; i++)
+//			strArray[i] = String.valueOf(intArray[i]);
+//
+//		System.out.println(Arrays.toString(strArray));
 
+        //Đổ dữ liệu vào combobox
+        cbc_Tuoi.setModel(new DefaultComboBoxModel<>(Arrays.stream(qlgv.getNamSinh()).mapToObj(String::valueOf).toArray(String[]::new)));
+        cbc_Tuoi.setSelectedIndex(qlgv.getNamSinh().length -1);//Hiển thị năm gần nhất
+    }
+
+    void LoadTable() {//Hàm này dùng để load lại dữ liệu từ bên QLGV
+        defaultTableModel.setRowCount(0);//Clear dữ liệu cũ
+        defaultTableModel = (DefaultTableModel) tbl_GiaoVien.getModel();
+        for (GiaoVien x : qlgv.getlstGiaoVien()) {
+            defaultTableModel.addRow(new Object[]{x.getId(), x.getMagv(),
+                x.getTengv(), x.getTuoi(), x.getGioiTinh(), x.getSdt()});
+        }
     }
 
     /**
@@ -66,6 +92,8 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txt_Sdt = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        btn_Init1 = new javax.swing.JButton();
+        btn_Clear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dungna29");
@@ -89,7 +117,7 @@ public class MainGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_GiaoVien);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 326, 471, 220));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 326, 470, 220));
 
         btn_Them.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_Them.setText("Thêm");
@@ -101,13 +129,13 @@ public class MainGUI extends javax.swing.JFrame {
         getContentPane().add(btn_Them, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 141, 159, -1));
 
         btn_Init.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btn_Init.setText("Tạo 3 Giáo Viên");
+        btn_Init.setText("Đổ dữ liệu");
         btn_Init.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_InitActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Init, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 104, -1, -1));
+        getContentPane().add(btn_Init, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 104, 160, -1));
 
         btn_Sua.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_Sua.setText("Sửa");
@@ -119,6 +147,11 @@ public class MainGUI extends javax.swing.JFrame {
 
         btn_Timkiem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_Timkiem.setText("Tìm kiếm");
+        btn_Timkiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimkiemActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_Timkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 252, 159, -1));
 
         btn_Thoat.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -169,6 +202,11 @@ public class MainGUI extends javax.swing.JFrame {
 
         cbc_Tuoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbc_Tuoi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbc_Tuoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbc_TuoiActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbc_Tuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 243, 98, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -182,11 +220,46 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel7.setText("Sđt:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 107, -1, -1));
 
+        btn_Init1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_Init1.setText("Đổ dữ liệu");
+        btn_Init1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Init1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_Init1, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 104, 160, -1));
+
+        btn_Clear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_Clear.setText("Clear");
+        btn_Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ClearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_Clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
         // TODO add your handling code here:
+        int temp = rd_Nam.isSelected() == true ? 1 : 0;
+        //Lấy dữ liệu từ giao diện do người dùng nhập vào
+        GiaoVien giaoVien = new GiaoVien(txt_MaGV.getText(),
+                qlgv.getlstGiaoVien().size() + 1, txt_ten.getText(),
+                Integer.parseInt(txt_Tuoi.getText()),
+                rd_Nam.isSelected() == true ? 1 : 0,
+                txt_Sdt.getText());
+
+        //Thêm vào danh sách giáo viên gọi hàm ở bên QLGV ra
+        if (qlgv.addGiaoVien(giaoVien)) {
+            JOptionPane.showMessageDialog(this, "Chúc mừng bạn đã thêm thành công");
+
+            LoadTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thất bại");
+        }
+
 
     }//GEN-LAST:event_btn_ThemActionPerformed
 
@@ -196,9 +269,10 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btn_InitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InitActionPerformed
         // TODO add your handling code here:
+        defaultTableModel.setRowCount(0);
         defaultTableModel = (DefaultTableModel) tbl_GiaoVien.getModel();
         for (GiaoVien x : qlgv.getlstGiaoVien()) {
-            defaultTableModel.addRow(new Object[]{x.getId(), x.getMagv(),x.getTengv(),x.getTuoi(),x.getGioiTinh(),x.getSdt()});
+            defaultTableModel.addRow(new Object[]{x.getId(), x.getMagv(), x.getTengv(), x.getTuoi(), x.getGioiTinh(), x.getSdt()});
         }
 
 
@@ -219,10 +293,70 @@ public class MainGUI extends javax.swing.JFrame {
         txt_Tuoi.setText(String.valueOf(giaoVien.getTuoi()));//Phải ép kiểu từ số về chuỗi
         if (giaoVien.getGioiTinh() == 1) {
             rd_Nam.setSelected(true);
-        }else{
+        } else {
             rd_Nu.setSelected(true);
         }
+
+        //Tính tuổi của giáo viên và hiển thị ra năm sinh
+        int tempTuoi = 2020 - giaoVien.getTuoi();
+        //qlgv.getNamSinh().length độ dài của mảng kiểu số nguyên
+        for (int i = 0; i < qlgv.getNamSinh().length; i++) {
+            if (qlgv.getNamSinh()[i] == tempTuoi) {
+                cbc_Tuoi.setSelectedIndex(i);
+                break;
+            }
+        }
+
     }//GEN-LAST:event_tbl_GiaoVienMouseClicked
+
+    private void cbc_TuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbc_TuoiActionPerformed
+        // TODO add your handling code here:
+        int nam = 2020 - Integer.parseInt(cbc_Tuoi.getSelectedItem().toString());
+        txt_Tuoi.setText(String.valueOf(nam));
+    }//GEN-LAST:event_cbc_TuoiActionPerformed
+
+    private void btn_TimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimkiemActionPerformed
+        // TODO add your handling code here:
+        String input = JOptionPane.showInputDialog("Mời bạn nhập ma Giáo Viên: ");
+        int indexGV = qlgv.indexGV(input);//Hàm này dùng để kiểm tra xem giáo viên cần tìm có trong danh sách hay không
+        if (indexGV == -1) {
+            JOptionPane.showMessageDialog(this, "Mã giáo viên không tồn tại");
+            return;
+        } else {
+            JOptionPane.showMessageDialog(this, "Tìm thấy");
+            GiaoVien giaoVien = new GiaoVien();//Làm sạch lại đối tượng
+            //get(qlgv.indexGV(input) gọi ra hàm search trả ra index của đối tượng trong List
+            giaoVien = qlgv.getlstGiaoVien().get(indexGV);
+            txt_Sdt.setBackground(Color.yellow);
+            txt_Tuoi.setBackground(Color.yellow);
+            txt_MaGV.setBackground(Color.yellow);
+            txt_ten.setBackground(Color.yellow);
+            txt_Sdt.setText(giaoVien.getSdt());
+            txt_MaGV.setText(giaoVien.getMagv());
+            txt_ten.setText(giaoVien.getTengv());
+            txt_Tuoi.setText(String.valueOf(giaoVien.getTuoi()));//Phải ép kiểu từ số về chuỗi
+            if (giaoVien.getGioiTinh() == 1) {
+                rd_Nam.setSelected(true);
+            } else {
+                rd_Nu.setSelected(true);
+            }
+        }
+
+    }//GEN-LAST:event_btn_TimkiemActionPerformed
+
+    private void btn_Init1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Init1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Init1ActionPerformed
+
+    private void btn_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ClearActionPerformed
+        txt_Sdt.setText("");
+        txt_MaGV.setText("");
+        txt_ten.setText("");
+        txt_Tuoi.setText("");//Phải ép kiểu từ số về chuỗi    
+        rd_Nam.setSelected(true);
+        cbc_Tuoi.setSelectedIndex(qlgv.getNamSinh().length - 1);
+
+    }//GEN-LAST:event_btn_ClearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,7 +395,9 @@ public class MainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Clear;
     private javax.swing.JButton btn_Init;
+    private javax.swing.JButton btn_Init1;
     private javax.swing.JButton btn_Sua;
     private javax.swing.JButton btn_Them;
     private javax.swing.JButton btn_Thoat;
