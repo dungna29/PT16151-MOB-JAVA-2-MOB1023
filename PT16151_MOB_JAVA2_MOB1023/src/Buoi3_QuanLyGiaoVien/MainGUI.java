@@ -229,14 +229,16 @@ public class MainGUI extends javax.swing.JFrame {
         });
         getContentPane().add(btn_Init1, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 104, 160, -1));
 
-        btn_Clear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_Clear.setBackground(new java.awt.Color(0, 0, 204));
+        btn_Clear.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_Clear.setForeground(new java.awt.Color(255, 255, 0));
         btn_Clear.setText("Clear");
         btn_Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ClearActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
+        getContentPane().add(btn_Clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 160, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
