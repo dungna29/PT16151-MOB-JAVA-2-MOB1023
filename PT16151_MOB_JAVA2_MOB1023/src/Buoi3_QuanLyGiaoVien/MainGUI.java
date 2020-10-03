@@ -49,7 +49,7 @@ public class MainGUI extends javax.swing.JFrame {
 
         //Đổ dữ liệu vào combobox
         cbc_Tuoi.setModel(new DefaultComboBoxModel<>(Arrays.stream(qlgv.getNamSinh()).mapToObj(String::valueOf).toArray(String[]::new)));
-        cbc_Tuoi.setSelectedIndex(qlgv.getNamSinh().length -1);//Hiển thị năm gần nhất
+        cbc_Tuoi.setSelectedIndex(qlgv.getNamSinh().length - 1);//Hiển thị năm gần nhất
     }
 
     void LoadTable() {//Hàm này dùng để load lại dữ liệu từ bên QLGV
@@ -94,6 +94,7 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btn_Init1 = new javax.swing.JButton();
         btn_Clear = new javax.swing.JButton();
+        cbc_Loc = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dungna29");
@@ -240,6 +241,15 @@ public class MainGUI extends javax.swing.JFrame {
         });
         getContentPane().add(btn_Clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 160, -1));
 
+        cbc_Loc.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        cbc_Loc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbc_Loc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbc_LocActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbc_Loc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -276,6 +286,17 @@ public class MainGUI extends javax.swing.JFrame {
         for (GiaoVien x : qlgv.getlstGiaoVien()) {
             defaultTableModel.addRow(new Object[]{x.getId(), x.getMagv(), x.getTengv(), x.getTuoi(), x.getGioiTinh(), x.getSdt()});
         }
+
+        int slGiaoVien = qlgv.getlstGiaoVien().size();//Trả ra số lượng phần tử có trong danh sách
+        String[] arrCount = new String[slGiaoVien];
+        int temp = 0;
+        for (String x : arrCount) {
+            arrCount[temp] = String.valueOf(temp);
+            System.out.println(x);
+            temp++;
+          
+        }
+        cbc_Loc.setModel(new DefaultComboBoxModel<>(arrCount));
 
 
     }//GEN-LAST:event_btn_InitActionPerformed
@@ -360,6 +381,22 @@ public class MainGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_ClearActionPerformed
 
+    private void cbc_LocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbc_LocActionPerformed
+        // TODO add your handling code here:
+        int temp = cbc_Loc.getSelectedIndex();
+        System.out.println(temp);
+        defaultTableModel.setRowCount(0);
+        defaultTableModel = (DefaultTableModel) tbl_GiaoVien.getModel();
+        int soLan = 0;
+        for (GiaoVien x : qlgv.getlstGiaoVien()) {
+            if (temp == soLan) {
+                break;
+            }
+            defaultTableModel.addRow(new Object[]{x.getId(), x.getMagv(), x.getTengv(), x.getTuoi(), x.getGioiTinh(), x.getSdt()});
+            soLan++;
+        }
+    }//GEN-LAST:event_cbc_LocActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -405,6 +442,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_Thoat;
     private javax.swing.JButton btn_Timkiem;
     private javax.swing.JButton btn_Xoa;
+    private javax.swing.JComboBox<String> cbc_Loc;
     private javax.swing.JComboBox<String> cbc_Tuoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
