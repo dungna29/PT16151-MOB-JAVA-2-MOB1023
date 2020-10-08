@@ -70,7 +70,7 @@ public class S1_Exception {
     static void Exception2() {
         try {
             int a = Integer.parseInt("Dũng");
-            System.out.println("Thành công");
+            System.out.println(a);
         } catch (NumberFormatException numberFormatException) {
 
         }
@@ -79,7 +79,8 @@ public class S1_Exception {
     static void UnCheckedExceptions() {
         /*Là loại exception xảy ra tại thời điểm thực thi chương trình, 
         nó cũng có thể gọi là runtime exceptions đó là programming bugs, 
-        lỗi logic của chương trình… Loại exception này được bỏ qua trong quá trình compile, 
+        lỗi logic của chương trình… 
+        Loại exception này được bỏ qua trong quá trình compile,
         không bắt buộc ta phải handle nó.
         Ví dụ: NullPointerException, NumberFormatException, ArrayIndexOutOfBoundsException, DivideByZeroException
          */
@@ -133,7 +134,7 @@ public class S1_Exception {
          */
         String[] ss = {"1","a","2"};
         try {
-            int a = Integer.parseInt(ss[1]);
+            int a = Integer.parseInt(ss[4]);
         } catch (NumberFormatException e1) {
             System.out.println("Không đúng định dạng số");
         } catch (ArrayIndexOutOfBoundsException e2) {

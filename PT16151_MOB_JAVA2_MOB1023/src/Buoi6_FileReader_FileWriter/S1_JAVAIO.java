@@ -29,13 +29,6 @@ public class S1_JAVAIO {
         1. InputStream: được sử dụng để đọc dữ liệu từ một nguồn (source).
         2. OutputStream: được sử dụng để ghi dữ liệu đến đích (destination).
         */
-        
-        
-        
-        
-        
-        
-
     }
     
 }

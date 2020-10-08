@@ -20,12 +20,12 @@ public class S2_IOBinary {
 
     public static void main(String[] args) throws IOException {
         //Luồng IO NHỊ PHÂN JAVA
-        docKyTuTuBanPhim();
-        docChuoiKyTuTuBanPhim();
-        docFile();
-//        docNhieuByteFile();
-//        ghiNoiDungRaFile();
-//        ghiNoiDungNhieuByteRaFile();
+       // docKyTuTuBanPhim();
+       // docChuoiKyTuTuBanPhim();
+        //docFile();
+        //docNhieuByteFile();
+        //ghiNoiDungRaFile();
+        ghiNoiDungNhieuByteRaFile();
 //      
 
     }
@@ -35,7 +35,7 @@ public class S2_IOBinary {
         InputStream is = System.in;
         while (true) {
             System.out.print("Mời bạn nhập 1 ký tự vào: ");
-            int ch = is.read();//is.read() nó trả kiểu số nguyên
+            int ch = is.read();//is.read() nó trả kiểu số nguyên // ASCII Table - DECIMAL
             System.out.println(ch);
             is.read();
             if (ch == 'e') {
@@ -73,6 +73,7 @@ public class S2_IOBinary {
 
     static void docFile() throws IOException {
         //File nó chỉ lớp quản lý file và ở đây sẽ đường dẫn bên trong file
+        String path ="dataName.txt";
         File file = new File("dataName.txt");//dataName.dat
         //Nếu file không tìm thấy file có trong thư mục thì tạo 1 file mới
         if (!file.exists()) {
@@ -126,7 +127,7 @@ public class S2_IOBinary {
         // Tạo một mảng byte ,ta sẽ ghi các byte này vào file nói trên .
         byte[] by = new byte[] { 'f', 'p', 't', 'J', 'A', 'V', 'A', '2', '2', '0', '2','0'};
         //os.write(by[1]);//Ghi 1 byte xuống file
-        // Ghi lần lượt các ký tự vào luồng
+//        // Ghi lần lượt các ký tự vào luồng
         for (int i = 0; i < by.length; i++) {
             byte b = by[i];
             // Thực hiện ghi vào file

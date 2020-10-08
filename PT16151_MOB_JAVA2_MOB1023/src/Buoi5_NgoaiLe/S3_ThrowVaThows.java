@@ -31,15 +31,11 @@ public class S3_ThrowVaThows {
         bình thường của chương trình.
 
          */
-        KiemTraTuoi(19);//Ném ra 1 ngoại lệ ArithmeticException nếu không thỏa mãn
-        
-        
-   
-        
-            S3_ThrowVaThows obj = new S3_ThrowVaThows();
-            //obj.method();
-        
- 
+        //KiemTraTuoi(17);//Ném ra 1 ngoại lệ ArithmeticException nếu không thỏa mãn
+
+        S3_ThrowVaThows obj = new S3_ThrowVaThows();
+        //obj.method();
+
         System.out.println("normal flow...");
     }
 
