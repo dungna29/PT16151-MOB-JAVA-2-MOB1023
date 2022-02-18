@@ -5,7 +5,6 @@
  */
 package Buoi3_QuanLyGiaoVien;
 
-import Buoi1_MVC.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +29,7 @@ public class QLGV {
         lstGiaoVien.add(gv3);
         lstGiaoVien.add(gv4);
         lstGiaoVien.add(gv5);
+        
     }
 
     public List<GiaoVien> getlstGiaoVien() {

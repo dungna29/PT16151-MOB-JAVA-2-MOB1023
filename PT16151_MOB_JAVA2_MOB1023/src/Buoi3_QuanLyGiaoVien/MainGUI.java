@@ -5,7 +5,6 @@
  */
 package Buoi3_QuanLyGiaoVien;
 
-import Buoi1_MVC.*;
 import java.awt.Color;
 import java.util.Arrays;
 import javax.swing.ButtonGroup;

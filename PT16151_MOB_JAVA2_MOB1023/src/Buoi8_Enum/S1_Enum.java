@@ -10,14 +10,14 @@ package Buoi8_Enum;
  * @author Nguyen Anh Dung
  */
 //Khai báo bên ngoài 1 lớp thì sẽ không được khai báo access modifier
-enum NgayTrongTuan1 {
-    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
-}
+//enum NgayTrongTuan1 {
+//    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+//}
 
 public class S1_Enum {
-//   enum NgayTrongTuan1 {
-//        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
-//    }
+   enum NgayTrongTuan1 {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+    }
 
     public static void main(String[] args) {
         //enum là một từ khóa trong Java, là một kiểu dữ liệu đặc biệt 

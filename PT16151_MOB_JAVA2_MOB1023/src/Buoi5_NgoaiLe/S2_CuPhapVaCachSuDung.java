@@ -92,15 +92,9 @@ public class S2_CuPhapVaCachSuDung {
 
     static void LuuYKhiSuDung() {
         /*
-        Tại một thời điểm chỉ xảy ra một ngoại lệ và tại một thời điểm chỉ có một khối catch được thực thi. 
-        Khi exception đã bị bắt ở một catch thì các catch tiếp theo sẽ không được bắt.
-        
-        Tất cả các khối catch phải được sắp xếp từ cụ thể nhất đến chung nhất (từ exception con đến exception cha), 
-        tức là phải khai báo khối lệnh catch để xử lý lỗi NullPointerException, ArithmeticException, … 
-        trước khi khai báo catch để xử lý lỗi Exception.
-        
-        Khối lệnh finally luôn được thực thi dù chương trình có xảy ra ngoại lệ hay không (ngay cả sử dụng lệnh return).
-        
+        Tại một thời điểm chỉ xảy ra một ngoại lệ và tại một thời điểm chỉ có một khối catch được thực thi. Khi exception đã bị bắt ở một catch thì các catch tiếp theo sẽ không được bắt.        
+        Tất cả các khối catch phải được sắp xếp từ cụ thể nhất đến chung nhất (từ exception con đến exception cha), tức là phải khai báo khối lệnh catch để xử lý lỗi NullPointerException, ArithmeticException, … trước khi khai báo catch để xử lý lỗi Exception.        
+        Khối lệnh finally luôn được thực thi dù chương trình có xảy ra ngoại lệ hay không (ngay cả sử dụng lệnh return).        
         Đối với mỗi khối try, có thể không có hoặc nhiều khối catch, nhưng chỉ có một khối finally.
         Khối finally sẽ không được thực thi nếu chương trình bị thoát bằng cách gọi System.exit() 
         hoặc xảy ra một lỗi (Error) không thể tránh khiến chương trình bị chết.

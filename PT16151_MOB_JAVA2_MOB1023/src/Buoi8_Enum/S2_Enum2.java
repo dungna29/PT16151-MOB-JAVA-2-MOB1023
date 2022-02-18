@@ -14,7 +14,7 @@ public class S2_Enum2 {
     enum CacLoaiPhuongTien {
         // Khởi tạo các phần tử từ construnctor
         // Các phần tử này luôn là static final
-        CAR(1), TRUCK(2), AIRPLANE(3), TRAIN(8), BOAT(9), BIKE(10);
+        CAR(5), TRUCK(2), AIRPLANE(3), TRAIN(8), BOAT(9), BIKE(10);
 
         private int value;
 

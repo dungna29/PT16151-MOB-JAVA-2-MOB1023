@@ -5,8 +5,6 @@
  */
 package Buoi3_QuanLyGiaoVien;
 
-import Buoi1_MVC.*;
-
 /**
  *
  * @author LegendNguyen
