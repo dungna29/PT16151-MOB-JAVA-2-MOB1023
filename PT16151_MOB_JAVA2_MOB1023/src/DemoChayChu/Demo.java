@@ -27,7 +27,7 @@ public class Demo extends javax.swing.JFrame {
 
     }
 
-    void cong1Diem() {
+    void cong1Diem() {//Chạy lên xuống
         String name1 = lbl_String1.getText().toString();
         char arrStringMot[] = new char[name1.length()];
         for (int i = 0; i < name1.length(); i++) {
@@ -72,7 +72,7 @@ public class Demo extends javax.swing.JFrame {
         tr2.start();
     }
 
-    void bl1() {
+    void bl1() {//Chạy từng ký tự
         Thread tr1 = new Thread() {
             @Override
             public void run() {
@@ -101,7 +101,7 @@ public class Demo extends javax.swing.JFrame {
         tr1.start();
     }
 
-    void bl2() {
+    void bl2() {//CHạy Từng từ trong String
         Thread tr2 = new Thread() {
             int i = 0;
             String text = lbl_2.getText();
